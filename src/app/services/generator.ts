@@ -4,24 +4,33 @@ export class Island {
 
     let island = new Array(height);
 
-    for (let i = 0; i < island.length; i++) {
-      island[i] = new Array(width);
+    for (let y = 0; y < island.length; y++) {
+      island[y] = new Array(width);
     }
 
-    for (let i = 0; i < island.length; i++) {
-      for (let j = 0; j < island[i].length; j++) {
-        island[i][j] = 0;
+    for (let y = 0; y < island.length; y++) {
+      for (let x = 0; x < island[y].length; x++) {
+        island[y][x] = 0;
       }
     }
 
-    let midH = island.length / 2;
-    let midW = island[0].length / 2;
+
+    let midY = island.length / 2;
+    let midX = island[0].length / 2;
+
+    let pY = 0.0;
+    let pX = 0.0;
 
     let probability = 0;
 
-    for (let i = 0; i < island.length; i++) {
-      for (let j = 0; j < island[i].length; j++) {
+    for (let y = 0; y < island.length; y++) {
+      for (let x = 0; x < island[y].length; x++) {
+        pY = Math.abs(midY - y) / midY;
+        pX = Math.abs(midX - x) / midX;
 
+        probability = pY * pX;
+
+        if (probability > Math.random()) island[y][x] = 1;
       }
     }
 
