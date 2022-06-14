@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Island} from "./services/generator";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'island';
+  private readonly island: Island = new Island();
+
+  get getIsland(): number[][] {
+    return this.island.get(32, 32);
+  }
+
+
 }
